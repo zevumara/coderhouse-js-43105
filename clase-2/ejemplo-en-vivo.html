@@ -8,26 +8,40 @@
 	</head>
 	<body>
 		<script>
-		    let genero = prompt('Decime tu género:');
-		    let anioNacimiento = prompt('Dame tu fecha de nacimiento:');
-		    let edad = 2023 - anioNacimiento;
+			let genero = prompt('Decime tu género:');
+			let anioNacimiento = prompt('Dame tu fecha de nacimiento:');
+			let edad = 2023 - anioNacimiento;
 
-		    let mayorEdad;
-		    if (edad >= 18) {
-			mayorEdad = true;
-		    } else {
-			mayorEdad = false;
-		    }
-
-		    if (mayorEdad == true && (genero == "F" || genero == "Femenino")) {
-			alert('Podés pasar gratis.');
-		    } else {
-			if (mayorEdad == false) {
-			    alert('Sos menor, no podés pasar.');
-			}else if (genero == "M" || genero == "Masculino") {
-			    alert('Pasá por caja campeón.');
+			let mayorEdad;
+			if (edad >= 18) {
+				mayorEdad = true;
+			} else {
+				mayorEdad = false;
 			}
-		    }
+
+			if (mayorEdad == true && (genero == "F" || genero == "Femenino")) {
+				alert('Podés pasar gratis.');
+			} else {
+				if (mayorEdad == false) {
+				    alert('Sos menor, no podés pasar.');
+				}else if (genero == "M" || genero == "Masculino") {
+				    alert('Pasá por caja campeón.');
+				}
+			}
+			
+			// Otra forma más ordenada para nuestro cerebro
+			// Primero compruebo si es mayor de edad
+			if (mayorEdad == true) {
+				// Segundo paso, sabiendo que es mayor, compruebo el género
+				if (genero == "F" || genero == "Femenino"){
+					alert('Podés pasar gratis.');
+				} else if (genero == "M" || genero == "Masculino") {
+				    	alert('Pasá por caja campeón.');
+				}
+			} else {
+				// Si es menor, no lo dejo pasar
+				alert('Sos menor, no podés pasar.');
+			}
 		</script>
 	</body>
 </html>
