@@ -18,7 +18,8 @@
 			} else {
 				mayorEdad = false;
 			}
-
+			
+			// Ejemplo de la clase
 			if (mayorEdad == true && (genero == "F" || genero == "Femenino")) {
 				alert('Podés pasar gratis.');
 			} else {
@@ -27,6 +28,15 @@
 				}else if (genero == "M" || genero == "Masculino") {
 				    alert('Pasá por caja campeón.');
 				}
+			}
+			
+			// Solo con else if
+			if (mayorEdad == true && (genero == "F" || genero == "Femenino")) {
+				alert('Podés pasar gratis.');
+			} else if (mayorEdad == true && (genero == "M" || genero == "Masculino")) {
+				alert('Pasá por caja campeón.');
+			} else if (mayorEdad == false) {
+				alert('Sos menor, no podés pasar.');
 			}
 			
 			// Otra forma más ordenada para nuestro cerebro
