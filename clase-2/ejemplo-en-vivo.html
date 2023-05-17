@@ -8,26 +8,26 @@
 	</head>
 	<body>
 		<script>
-            let genero = prompt('Decime tu género:');
-            let anioNacimiento = prompt('Dame tu fecha de nacimiento:');
-            let edad = 2023 - anioNacimiento;
+		    let genero = prompt('Decime tu género:');
+		    let anioNacimiento = prompt('Dame tu fecha de nacimiento:');
+		    let edad = 2023 - anioNacimiento;
 
-            let mayorEdad;
-            if (edad >= 18) {
-                mayorEdad = true;
-            } else {
-                mayorEdad = false;
-            }
+		    let mayorEdad;
+		    if (edad >= 18) {
+			mayorEdad = true;
+		    } else {
+			mayorEdad = false;
+		    }
 
-            if (mayorEdad == true && (genero == "F" || genero == "Femenino")) {
-                alert('Podés pasar gratis.');
-            } else {
-                if (mayorEdad == false) {
-                    alert('Sos menor, no podés pasar.');
-                }else if (genero == "M" || genero == "Masculino") {
-                    alert('Pasá por caja campeón.');
-                }
-            }
-        </script>
+		    if (mayorEdad == true && (genero == "F" || genero == "Femenino")) {
+			alert('Podés pasar gratis.');
+		    } else {
+			if (mayorEdad == false) {
+			    alert('Sos menor, no podés pasar.');
+			}else if (genero == "M" || genero == "Masculino") {
+			    alert('Pasá por caja campeón.');
+			}
+		    }
+		</script>
 	</body>
 </html>
