@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// Consola de comandos usando WHILE, FOR, Y SWITCH
+			let comando;
+
+			while (comando != 'Salir') {
+				comando = prompt('Ingrese el comando:\n\n- Salir\n- Enviar mensaje\n- Mostrar productos\n- Hackear NASA');
+
+				switch (comando) {
+					case 'Enviar mensaje':
+						let destinatario = prompt('Ingrese el nombre de destinatario');
+						let mensaje = prompt('Ingrese el mensaje que sea enviar');
+						alert("Mensaje '" + mensaje + "' enviado a " + destinatario);
+						break;
+					case 'Mostrar productos':
+						for (let i = 1; i <= 3; i++) {
+							alert('Producto N° ' + i);
+						}
+						break;
+					case 'Hackear NASA':
+						alert('Conectandose con la IP de la NASA... Aguarde un momento por favor.');
+						let clave = prompt('Ingrese la clave por favor:');
+						if (clave == 1234) {
+							alert('Conectado con la base de datos de la NASA. Obteniendo información EXTRARRESTRE...');
+							window.location =
+								'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4dmzseyAFZwE6eprD44owSMxQMFNwBVMnp6l69WXSZDb5Lq6oZ8P4z3CF3pZOSzgbSjs&usqp=CAU';
+							comando = 'Salir';
+						}
+				}
+			}
+		</script>
+	</body>
+</html>

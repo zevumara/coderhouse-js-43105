@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// Calculador de tablas FOR
+			let tabla = parseInt(prompt('¿Qué tabla querés saber?'));
+
+			for (let i = 1; i < 11; i++) {
+				let resultado = tabla * i;
+				alert(tabla + ' x ' + i + ' es igual a ' + resultado);
+			}
+
+			// Dispensario de turnos FOR
+			for (let turno = 1; turno < 10; turno++) {
+				let nombre = prompt('Ingresá tu nombre:');
+				if (nombre == 'Ricardo') {
+					alert('No le damos turnos a gente que se llama Ricardo');
+					continue;
+				}
+				if (cupos < 1) {
+					alert(nombre + ' disculpá, no tenemos más turnos disponibles');
+					break;
+				}
+				alert(nombre + ', tu turno es el N° ' + numero_turno);
+				numero_turno = numero_turno + 1;
+				cupos = cupos - 1;
+			}
+
+			// Consola de comandos con WHILE y IF, ELSE IF
+			let comando;
+
+			while (comando != 'Salir') {
+				comando = prompt('Ingrese el comando:\n\n- Salir\n- Enviar mensaje\n- Mostrar productos');
+
+				if (comando == 'Enviar mensaje') {
+					let destinatario = prompt('Ingrese el nombre de destinatario');
+					let mensaje = prompt('Ingrese el mensaje que sea enviar');
+					alert("Mensaje '" + mensaje + "' enviado a " + destinatario);
+				} else if (comando == 'Mostrar productos') {
+					for (let i = 1; i <= 3; i++) {
+						alert('Producto N° ' + i);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
