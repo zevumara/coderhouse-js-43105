@@ -8,7 +8,28 @@
 	</head>
 	<body>
 		<script>
+			// Que pasa si...
+			// Cuantos mensajes de alert van a saltar
+			let alerts = 5;
+			for (let i = 1; i <= alerts; i++) {
+				let contador = 0;
+				contador = contador + 1;
+				alert(contador);
+			}
+
+			// Dispensario de turnos FOR
+			let cola = 10;
+			for (let i = 1; i < cola; i++) {
+				let nombre = prompt('Ingresá tu nombre:');
+				if (nombre == 'Ricardo') {
+					alert('No le damos turnos a gente que se llama Ricardo');
+					continue;
+				}
+				console.log('Número de turno: ' + i); // Que va imprimir acá si me llamo Ricardo
+			}
+
 			// Consola de comandos usando WHILE, FOR, Y SWITCH
+			// Importancia de no olvidarse del break; y la utilidad del default:
 			let comando;
 
 			while (comando != 'Salir') {
@@ -36,7 +57,7 @@
 						}
 						break;
 					default:
-						alert('El comando ingresado no se reconoce.');
+						alert('El comando ingresado es inválido.');
 						break;
 				}
 			}

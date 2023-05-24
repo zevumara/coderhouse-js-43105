@@ -17,6 +17,8 @@
 			}
 
 			// Dispensario de turnos FOR
+			let numeroTurno = 0;
+			let cupos = 3;
 			for (let turno = 1; turno < 10; turno++) {
 				let nombre = prompt('Ingresá tu nombre:');
 				if (nombre == 'Ricardo') {
@@ -27,8 +29,8 @@
 					alert(nombre + ' disculpá, no tenemos más turnos disponibles');
 					break;
 				}
-				alert(nombre + ', tu turno es el N° ' + numero_turno);
-				numero_turno = numero_turno + 1;
+				alert(nombre + ', tu turno es el N° ' + numeroTurno);
+				numeroTurno = numeroTurno + 1;
 				cupos = cupos - 1;
 			}
 
