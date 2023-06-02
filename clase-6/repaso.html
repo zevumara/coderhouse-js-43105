@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function holaMundo(){
+			mensaje = "Hola mundo";
+			return mensaje;
+		}
+
+		console.log(holaMundo());
+
+		function esPar(numero){
+			if (numero % 2 === 0){
+				return true;
+			}
+			return false;
+		}
+
+		if (esPar(5)){
+			console.log("EL NUMERO ES PAR");
+		}else{
+			console.log("EL NUMERO ES IMPAR");
+		}
+
+		/*
+		ESTO ES UNA BUENA PRÁCTICA
+		Aunque es posible obtener el mismo resultado sin utilizar return, es importante tener en cuenta que el uso de variables globales
+		puede llevar a problemas de mantenibilidad y legibilidad del código. Las variables globales pueden ser modificadas en cualquier
+		parte del programa, lo que puede llevar a errores difíciles de depurar. Es por eso que, en general, se recomienda utilizar return
+		para devolver valores desde funciones y evitar el uso de variables globales en la medida de lo posible.
+
+		*/
+
+		// Función regular
+
+		function sumar(valor1, valor2){
+			return valor1 + valor2;
+		}
+
+		// Función anónima
+
+		const sumar = function (valor1, valor2){
+			return valor1 + valor2; 
+		}
+
+		setTimeout(function(){
+			alert("Se va a ejecutar este alert dentro de un segundo");
+		}, 3000);
+
+		// Función flecha
+
+		const sumar = (valor1, valor2) => {
+			return valor1 + valor2; 
+		}
+
+		const sumar = (valor1, valor2) => valor1 + valor2;
+
+		const esPar = (numero) => numero % 2 === 0;
+	</script>
+</body>
+</html>
