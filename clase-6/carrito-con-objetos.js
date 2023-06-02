@@ -66,6 +66,7 @@ const carrito = new Carrito();
 
 // FUNCIONES PARA LOS BOTONES EN HTML
 
+// Botón Agregar producto
 function agregarProducto(){
     // Pido por prompt los datos del producto
     let nombre = prompt("Introduzca el nombre del producto");
@@ -82,6 +83,7 @@ function agregarProducto(){
     carrito.agregar(nuevoProducto);
 }
 
+// Botón Quitar Producto
 function quitarProducto(){
     // Pido por prompt el nombre del producto que quiero quitar
     let nombre = prompt("Introduzca el nombre del producto que desea quitar");
