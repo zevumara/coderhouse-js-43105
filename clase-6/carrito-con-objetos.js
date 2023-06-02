@@ -8,7 +8,7 @@ class Carrito{
         // Recorro producto por producto el array
         for (let producto of this.productos){
             // Si el nombre del nuevo producto que introduje en el prompt (función agregarProducto())
-            // es igual al producto que estoy comparando en el ciclo, significa que ya està en el array
+            // es igual al producto que estoy comparando en el ciclo, significa que ya está en el array
             if (producto.nombre == nuevoProducto.nombre){
                 return true; // Está en el array, salgo del for
             }
