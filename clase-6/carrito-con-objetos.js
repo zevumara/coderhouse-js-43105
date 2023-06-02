@@ -40,13 +40,13 @@ class Carrito{
         }
     }
 
-    // Remueve un producto del carrito
-    quitar(nombre){
+    // Remueve un producto del carrito basado en el nombre
+    quitar(nombre){ // Parámetro nombre que viene de la función quitarProducto()
         // Recorro cada elemento (objeto) del array
         for (let producto of this.productos){
-            // Comparo el nombre del producto con el parámaetro nombre (que viene del prompt de la función quitarProducto())
+            // Comparo el nombre del producto (atributo nombre) con el nombre que introduje en el prompt (parámetro que viene de la función quitarProducto())
             if (producto.nombre == nombre){
-                // Guardo el ínide del producto
+                // Guardo el índice del producto
                 let indice = this.productos.indexOf(producto);
                 // Lo borro del array con splice, usando el índice
                 this.productos.splice(indice, 1);
@@ -61,7 +61,7 @@ class Carrito{
 // Creo el objeto carrito
 const carrito = new Carrito();
 
-// Funciones para los botones
+// FUNCIONES PARA LOS BOTONES EN HTML
 
 function agregarProducto(){
     // Pido por prompt los datos del producto
