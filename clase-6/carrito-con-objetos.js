@@ -9,8 +9,8 @@ class Carrito {
       if (producto.nombre == nuevoProducto.nombre) {
         return true;
       }
-      return false;
     }
+    return false; // Recuerden que el return false debe estar fuera del for para que no lo corte
   }
 
   // Agregar al carrito
