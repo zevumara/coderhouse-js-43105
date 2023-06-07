@@ -18,7 +18,7 @@ class Carrito {
     // Si encuentra algún producto, lo guardo en una variable
     let productoEncontrado = this.enCarrito(nuevoProducto);
     if (productoEncontrado) {
-      // Con el preoducto en una variable, puedo sumarle directamente
+      // Con el producto en una variable, puedo sumarle directamente
       // la cantidad y multiplicar su precio
       productoEncontrado.cantidad += 1;
       productoEncontrado.precio *= productoEncontrado.cantidad;
@@ -57,10 +57,12 @@ class Carrito {
   quitar(nombreProducto) {
     // Abstracción: readapto y reutilzo código de una solución
     // previa (método enCarrito)
-    if (this.enCarrito({ nombre: nombreProducto })) {
-      let indice = this.productos.indexOf(producto);
-      this.productos.splice(indice, 1);
-      alert("El producto " + nombre + " fue borrado del carrito");
+    let productoEncontrado = this.enCarrito({ nombre: nombreProducto });
+    if (productoEncontrado) {
+      // Obtengo el índice
+      let indice = this.productos.indexOf(productoEncontrado);
+      this.productos.splice(indice, 1); // Lo vuelo con splice
+      alert("El producto " + nombreProducto + " fue borrado del carrito");
       this.listar();
     }
   }
