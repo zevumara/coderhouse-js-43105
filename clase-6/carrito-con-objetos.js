@@ -9,8 +9,8 @@ class Carrito {
       if (producto.nombre == nuevoProducto.nombre) {
         return true;
       }
+      return false;
     }
-    return false; // Recuerden, el false debe estar fuera del for
   }
 
   // Agregar al carrito
@@ -64,7 +64,7 @@ class Carrito {
 // Creo el objeto carrito
 const carrito = new Carrito();
 
-// Funciones para los botones
+// FUNCIONES PARA LOS BOTONES EN HTML
 
 function agregarProducto() {
   // Pido por prompt los datos del producto
