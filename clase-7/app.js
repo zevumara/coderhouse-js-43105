@@ -67,11 +67,16 @@ class Carrito {
 
   // Buscador con filter e includes en una sola línea (is majeco)
   buscar(nombreProducto) {
+    // El filter devuelve un array con los resultados encontrados
+    // y en caso de no encontrar nada, devuelve un array vacío []
     let resultado = this.productos.filter((producto) =>
+      // El método includes en un string se fija si esa palabra
+      // esta incluída en el string, si está devuelve true, sino false
+      // Al devolver true, filter lo guarda en el array, sino lo ignora
       producto.nombre.includes(nombreProducto)
     );
     // Muestro consola (estoy repitiendo código del método this.listar
-    // se podría optimizar y readaptar para reutilizar ese código)
+    // se podría optimizar y adaptar para reutilizar ese código)
     console.clear();
     console.log("Productos encontrados:");
     resultado.forEach((producto) => {
@@ -81,9 +86,9 @@ class Carrito {
       console.log("Cantidad: " + producto.cantidad);
     });
 
-    // Posible utilización del map: crea otro array duplicado
-    // pero con los elementos modificados según lo que quiera lograr,
-    // en este caso le agergo el IVA al precio
+    // Posible utilización del map (no aplicado, solo a modo de ejmplo):
+    // crea otro array duplicado pero con los elementos modificados
+    // según lo que quiera lograr, en este caso le agergo el IVA al precio
     let listaPreciosActualizados = this.productos.map((producto) => {
       return {
         nombre: producto.nombre,
