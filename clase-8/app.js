@@ -15,10 +15,7 @@ class Carrito {
 
   enCarrito(nuevoProducto) {
     return this.productos.find((producto) => {
-      if (
-        producto.nombre == nuevoProducto.nombre &&
-        producto.precio == nuevoProducto.precio
-      ) {
+      if (producto.nombre == nuevoProducto.nombre && producto.precio == nuevoProducto.precio) {
         return true;
       }
       return false;
@@ -34,14 +31,11 @@ class Carrito {
       // la cantidad y multiplicar su precio
       productoEncontrado.cantidad += 1;
       productoEncontrado.precio = nuevoProducto.precio;
-      productoEncontrado.subtotal =
-        nuevoProducto.precio * productoEncontrado.cantidad;
+      productoEncontrado.subtotal = nuevoProducto.precio * productoEncontrado.cantidad;
     } else {
       // Si no está en el carrito, lo agrego al array.
       this.productos.push(nuevoProducto);
-      alert(
-        "El producto " + nuevoProducto.nombre + " fue agregado al carrito."
-      );
+      alert("El producto " + nuevoProducto.nombre + " fue agregado al carrito.");
     }
     // Muestro la lista de productos llamando al método listar
     this.listar();
@@ -62,8 +56,7 @@ class Carrito {
 
     // Uso la el método reduce para sumar el total de los productos
     this.total = this.productos.reduce(
-      (acumulador, producto) =>
-        acumulador + producto.precio * producto.cantidad,
+      (acumulador, producto) => acumulador + producto.precio * producto.cantidad,
       0
     );
     console.log("------");
