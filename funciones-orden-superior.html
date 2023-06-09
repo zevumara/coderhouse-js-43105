@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // PELIGRO NO EJECUTAR, EXPLOTA LA MÁQUINA
+
+      const inicio = new Date();
+
+      let calcular = 100;
+      function regular() {
+        for (let i = 0; i < 100; i++) {
+          calcular *= i;
+        }
+      }
+
+      for (let i = 0; i < 1000; i++) {
+        regular();
+      }
+
+      const final = new Date();
+
+      console.log("El proceso tardó: " + (final - inicio) + " milisegundos");
+    </script>
+  </body>
+</html>
