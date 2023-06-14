@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .resaltar {
+      border: 10px solid red;
+      border-radius: 10px;
+    }
+    .ocultar {
+      display: none;
+    }
+  </style>
+  <body>
+    <header id="encabezado">
+      <h1>Esto es un título</h1>
+      <p id="primerParrafo" class="texto">Esto es un párrafo</p>
+    </header>
+    <section id="seccion">
+      <p class="texto">Otro párrafo</p>
+    </section>
+    <button onClick="prueba()">Botón de prueba</button>
+    <script>
+      // Nos devuelve un elemento por ID
+      const elementoHeader1 = document.getElementById("encabezado");
+      const primerParrafo = document.getElementById("primerParrafo");
+      const input = document.getElementById("input");
+      function prueba() {
+        primerParrafo.remove();
+        input.value = "Chau";
+      }
+
+      // Alternativa con querySelector (seleccionados elementos con los selectores de CSS)
+      const elementoHeader2 = document.querySelector("#encabezado"); // Devuelve el primero que encuentra
+
+      // Nos devuelve una LISTA (array) de elementos que tengan la clase .texto
+      const parrafos1 = document.getElementsByClassName(".texto");
+
+      // Alternativa con querySelectorAll (seleccionados elementos con los selectores de CSS)
+      const parrafos2 = document.querySelectorAll(".texto"); // Devuelve un array
+
+      // Nos devuelve una LISTA (array) de elementos que sean de etiqueta p
+      const parrafos = document.getElementsByTagName("p");
+      // innerText modifiica el texto interno de un elemento
+      parrafos[0].innerText = "Modifico el contenido";
+
+      const seccion = document.getElementById("seccion");
+      // innerHTML permite alterar el contenido HTML de un elemento
+      seccion.innerHTML = "<button onClick='resaltar()'>Esto es un botón</button>";
+      function resaltar() {
+        // Modifica las clases del elemento
+        seccion.className = "resaltar";
+      }
+
+      // Crear nodo de tipo Elemento, etiqueta p
+      let div = document.createElement("div");
+      // Insertar HTML interno
+      div.innerHTML = "<h2>¡Hola Coder!</h2>";
+      // Añadir el nodo Element como hijo de body
+      document.body.append(parrafo);
+
+      // Obtenemos el nodo donde vamos a agregar los nuevos elementos
+      let padre = document.getElementById("personas");
+      // Array con la información a agregar
+      let personas = ["RICAR", "DO", "BART", "LISA", "MAGGIE"];
+      // Iteramos el array con for...of
+      for (const persona of personas) {
+        //Creamos un nodo <li> y agregamos al padre en cada ciclo
+        let li = document.createElement("li");
+        li.innerHTML = persona;
+        padre.append(li);
+      }
+
+      // Plantillas literales, alternativa para concatenar strings de manera más sencilla y limpia
+      let producto = { id: 1, nombre: "Arroz", precio: 125 };
+
+      // Concatenación clásica
+      let concatenacion =
+        "ID: " + producto.id + " - Producto: " + producto.nombre + " $" + producto.precio;
+
+      // Concatenación con plantillas
+      let plantilla = `ID: ${producto.id} - Producto: ${producto.nombre} $${producto.precio}`;
+
+      console.log(concatenacion);
+      console.log(plantilla);
+    </script>
+  </body>
+</html>
