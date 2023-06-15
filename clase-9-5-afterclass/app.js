@@ -47,6 +47,9 @@ function comprar(item) {
   if (oro - item.precio <= 0) {
     // Si el oro que tengo menos el precio no me alcanza
     alert("No ténes suficiente oro para comprar " + item.nombre + ".");
+  } else if (mochila.length > 5) {
+    // No tiene más espacio en el inventario
+    alert("No ténes más espacio en el inventario.");
   } else {
     // Si me alcanza, agrego el item a la mochi
     mochila.push(item);
