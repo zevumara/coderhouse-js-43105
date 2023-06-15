@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  </head>
+  <style>
+    body {
+      font-family: "VT323", monospace;
+      background-color: black;
+    }
+    main {
+      color: white;
+      width: 50%;
+      margin: auto;
+      border-radius: 5px;
+      padding: 1rem 1rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      position: relative;
+    }
+    li {
+      padding: 0.5rem;
+      cursor: pointer;
+      border: 5px solid black;
+      font-size: 1.5rem;
+    }
+    li:hover {
+      border: 5px solid white;
+    }
+    .item {
+      display: inline-block;
+    }
+    #mochila {
+      min-height: 140px;
+      padding: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+      padding: 1rem;
+      font-weight: 400;
+      line-height: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0;
+      padding: 1rem;
+      font-weight: 400;
+    }
+    .ventana {
+      border: 5px solid white;
+      background-color: black;
+      opacity: 0.9;
+    }
+    #oro {
+      color: gold;
+      font-size: 3rem;
+    }
+  </style>
+  <body>
+    <main>
+      <section>
+        <img src="img/npc.png" height="350" />
+        <div class="ventana" style="margin-top: -130px; position: relative">
+          <h1 style="padding-bottom: 0">Hola, soy Ricky.</h1>
+          <h2 style="padding-top: 0.5rem">¿Vas a comprar algo o te vas a quedar en el molde?</h2>
+        </div>
+        <ul>
+          <li onclick="comprar(pocion)">Poción de Vida</li>
+          <li onclick="comprar(espada)">Espada</li>
+          <li onclick="comprar(escudo)">Escudo</li>
+        </ul>
+      </section>
+      <section class="ventana">
+        <h1 style="text-align: left">Mi mochila</h1>
+        <ul id="mochila">
+          <!-- Acá vamos a cargar los items que vayamos comprando -->
+        </ul>
+        <h1 id="oro" style="text-align: right">Oro: <span></span></h1>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
