@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .ocultar {
+      display: none;
+    }
+  </style>
+  <body>
+    <button onclick="ocultar()">Texto</button>
+    <div id="texto">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat iure, iste
+        quibusdam odio quia neque odit ducimus excepturi sed rerum laudantium, aperiam, unde magnam
+        fugit voluptatem ab repudiandae alias ullam ipsam pariatur consequatur? Inventore excepturi
+        placeat sunt deserunt aspernatur, commodi architecto explicabo. Dolorum, eos. Magni nulla
+        beatae numquam deserunt impedit! Ratione explicabo distinctio nostrum, modi officiis sed
+        laudantium dicta animi odio ea, nesciunt voluptas dolorem commodi vel obcaecati at facilis,
+        facere libero. Repellat eveniet odio nisi dolorum fugiat modi quae iusto suscipit maxime
+        unde sapiente iure mollitia expedita eos ab sunt neque atque rerum quia quas, eligendi sint?
+        Optio?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas laudantium quae beatae rerum
+        in tempore optio est dolor error itaque illum eaque esse minima nulla unde, quisquam ab
+        doloremque! Ipsam voluptate, fugit rerum quae voluptatibus quod eaque veniam eum, mollitia
+        nam voluptas eveniet? Impedit soluta at ullam, totam blanditiis sed?
+      </p>
+    </div>
+    <form id="formulario">
+      <input name="nombre" type="text" placeholder="Poné tu nombre" />
+      <input name="edad" type="number" placeholder="Poné tu edad" />
+      <input type="submit" value="Enviar" />
+    </form>
+    <script>
+      // const elementoTexto = document.querySelector("#texto");
+      // function ocultar() {
+      //   if (elementoTexto.className == "ocultar") {
+      //     elementoTexto.className = "";
+      //   } else {
+      //     elementoTexto.className = "ocultar";
+      //   }
+      // }
+
+      // //CODIGO HTML DE REFERENCIA
+
+      // //CODIGO JS
+      // let input1 = document.getElementById("nombre");
+      // let input2 = document.getElementById("edad");
+
+      // input1.oninput = () => {
+      //   console.log("Está cambiando el input");
+      // };
+      // input2.oninput = () => {
+      //   console.log("Está cambiando el input");
+      // };
+
+      const formulario = document.getElementById("formulario");
+
+      formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log(event.target);
+        // Código para cuando envíe el formulario
+        console.log("Formulario enviado");
+      });
+    </script>
+  </body>
+</html>
