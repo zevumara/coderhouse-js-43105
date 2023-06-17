@@ -41,12 +41,11 @@ let oro = 1000;
 // Elementos
 const elementoOro = document.querySelector("#oro span");
 const elementoMochila = document.querySelector("#mochila");
+elementoOro.innerText = oro;
+
 const btnComprarPocion = document.querySelector("#btnComprarPocion");
 const btnComprarEspada = document.querySelector("#btnComprarEspada");
 const btnComprarEscudo = document.querySelector("#btnComprarEscudo");
-elementoOro.innerText = oro;
-
-const botones = document.querySelectorAll(".boton");
 
 // Botones simples
 // btnComprarPocion.addEventListener("click", function () {
@@ -63,6 +62,11 @@ const botones = document.querySelectorAll(".boton");
 
 // Más complejo, generar los eventos de los botones
 // de forma dinámica
+
+// Todos los botones con la clase .boton
+const botones = document.querySelectorAll(".boton");
+
+// Recorro todos los botones
 for (const boton of botones) {
   boton.addEventListener("click", function (event) {
     // 1 - Busco en la lista de items del vendedor, el item que
@@ -77,8 +81,6 @@ for (const boton of botones) {
     comprar(item);
   });
 }
-
-console.log(mochila);
 
 // Funciones regulares
 
