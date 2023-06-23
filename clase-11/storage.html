@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Tu nombre es: <span id="nombre">Natalia Natalia (NN)</span></h1>
+    <button onclick="definirNombre()">Definir nombre</button>
+    <button onclick="borrarStorage()">Borrar storage</button>
+    <script>
+      const elementoNombre = document.getElementById("nombre");
+
+      function definirNombre() {
+        let nombre = prompt("¿Cuál es tu nombre?");
+        localStorage.setItem("miNombre", nombre);
+        elementoNombre.innerText = nombre;
+      }
+
+      function borrarStorage() {
+        //localStorage.clear(); // Para borrar
+        localStorage.removeItem("miNombre");
+      }
+
+      elementoNombre.innerText = localStorage.getItem("miNombre");
+
+      // Con Storage no podemos guardar ni objetos ni arrays
+      const producto = {
+        nombre: "Arroz",
+        precio: 200,
+        stock: 10,
+      };
+
+      // Por lo que necesitamos convertir el objeto o array a JSON
+      // para guardarlo en forma de string con JSON.stringify
+      let productoJSON = JSON.stringify(producto);
+      localStorage.setItem("miProducto", productoJSON);
+
+      // Y una vez lo traemos, y lo queremos usar, lo volvemos a convertir
+      // en objeto o array con JSON.parse
+      let storageJSON = JSON.parse(localStorage.getItem("miProducto"));
+
+      // producto vuelve a ser un objeto:
+      console.log(storageJSON);
+    </script>
+  </body>
+</html>
