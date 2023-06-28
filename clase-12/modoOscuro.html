@@ -40,7 +40,9 @@
 
       // Modo oscuro: lo traigo del localStorage y lo convierto en número,
       // en caso de que no haya nada devuelve 0
-      let modoOscuro = Number(localStorage.getItem("darkMode"));
+      // modoOscuro = 1: Modo oscuro activado
+      // modoOscuro = 0: Modo claro activado
+      let modoOscuro = Number(localStorage.getItem("modo"));
 
       // Aplico el modo
       aplicarModo(modoOscuro);
@@ -50,19 +52,27 @@
         // Previene el comportamiento default del HTML: en este caso
         // que no se ejecute el link
         event.preventDefault();
-        modoOscuro = !modoOscuro;
-        localStorage.setItem("darkMode", modoOscuro ? 1 : 0);
+        // Al hacer click invierto los valores:
+        // Si está en 1, lo pongo en 0 (modo claro)
+        // Pero si está en 0, lo pongo en 1 (modo oscuro)
+        modoOscuro = modoOscuro == 1 ? 0 : 1;
+        // Guardo en el storage
+        localStorage.setItem("modo", modoOscuro);
         // Aplico el modo
         aplicarModo(modoOscuro);
       });
 
       // Función para aplicar el modo seleccionado
       function aplicarModo(modoOscuro) {
+        // Si está en 1, poné el modo oscuro
         if (modoOscuro) {
           document.body.className = "modoOsc";
+          // PERO en el texto poné que se pueda activar el Modo claro
           btnModoOsc.innerText = "Modo claro";
         } else {
+        // Si está en 0, borrá la clase modoOsc
           document.body.className = "";
+          // Y poné en el botón que se pueda actiar el Modo oscuro
           btnModoOsc.innerText = "Modo oscuro";
         }
       }
