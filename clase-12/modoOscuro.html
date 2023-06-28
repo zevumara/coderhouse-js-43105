@@ -23,7 +23,7 @@
       padding: 15px 20px;
       display: inline-block;
       text-transform: uppercase;
-      min-width: 300px;
+      min-width: 400px;
       text-align: center;
     }
     .modoOsc #btnModo {
@@ -38,10 +38,10 @@
       // Elementos
       const btnModoOsc = document.querySelector("#btnModo");
 
-      // Modo oscuro: lo traigo del localStorage y lo convierto en número,
-      // en caso de que no haya nada devuelve 0
       // modoOscuro = 1: Modo oscuro activado
       // modoOscuro = 0: Modo claro activado
+      // Lo traigo del localStorage y en caso de que no haya nada, con la función Number
+      // nos aseguramos que si no hay nada nos devuelva un 0
       let modoOscuro = Number(localStorage.getItem("modo"));
 
       // Aplico el modo
@@ -52,7 +52,7 @@
         // Previene el comportamiento default del HTML: en este caso
         // que no se ejecute el link
         event.preventDefault();
-        // Al hacer click invierto los valores:
+        // Al hacer click, invierto los valores:
         // Si está en 1, lo pongo en 0 (modo claro)
         // Pero si está en 0, lo pongo en 1 (modo oscuro)
         modoOscuro = modoOscuro == 1 ? 0 : 1;
@@ -68,12 +68,12 @@
         if (modoOscuro) {
           document.body.className = "modoOsc";
           // PERO en el texto poné que se pueda activar el Modo claro
-          btnModoOsc.innerText = "Modo claro";
+          btnModoOsc.innerText = "Activar modo claro";
         } else {
         // Si está en 0, borrá la clase modoOsc
           document.body.className = "";
-          // Y poné en el botón que se pueda actiar el Modo oscuro
-          btnModoOsc.innerText = "Modo oscuro";
+          // Y poné en el botón que se pueda activar el Modo oscuro
+          btnModoOsc.innerText = "Activar modo oscuro";
         }
       }
     </script>
