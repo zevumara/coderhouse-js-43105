@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  </head>
+  <style>
+    .modoOsc {
+      background-color: #222;
+    }
+    #btnModo {
+      font-family: "Inter", sans-serif;
+      font-size: 30px;
+      text-decoration: none;
+      border: 3px solid white;
+      color: white;
+      border-radius: 20px;
+      background-color: #333;
+      padding: 15px 20px;
+      display: inline-block;
+      text-transform: uppercase;
+      min-width: 300px;
+      text-align: center;
+    }
+    .modoOsc #btnModo {
+      border-color: #333;
+      color: #333;
+      background-color: white;
+    }
+  </style>
+  <body>
+    <a href="http://google.com" id="btnModo">Modo oscuro</a>
+    <script>
+      // Elementos
+      const btnModoOsc = document.querySelector("#btnModo");
+
+      // Modo oscuro: lo traigo del localStorage y lo convierto en número,
+      // en caso de que no haya nada devuelve 0
+      let modoOscuro = Number(localStorage.getItem("darkMode"));
+
+      // Aplico el modo
+      aplicarModo(modoOscuro);
+
+      // Evento click del link
+      btnModoOsc.addEventListener("click", function (event) {
+        // Previene el comportamiento default del HTML: en este caso
+        // que no se ejecute el link
+        event.preventDefault();
+        modoOscuro = !modoOscuro;
+        localStorage.setItem("darkMode", modoOscuro ? 1 : 0);
+        // Aplico el modo
+        aplicarModo(modoOscuro);
+      });
+
+      // Función para aplicar el modo seleccionado
+      function aplicarModo(modoOscuro) {
+        if (modoOscuro) {
+          document.body.className = "modoOsc";
+          btnModoOsc.innerText = "Modo claro";
+        } else {
+          document.body.className = "";
+          btnModoOsc.innerText = "Modo oscuro";
+        }
+      }
+    </script>
+  </body>
+</html>

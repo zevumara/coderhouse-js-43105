@@ -1,11 +1,13 @@
 class Carrito {
   constructor() {
     const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
+    // Original
     if (carritoStorage) {
       this.productos = carritoStorage;
     } else {
       this.productos = [];
     }
+    // Operador lógico OR
     this.productos = carritoStorage || [];
     this.total = 0;
     this.listar();

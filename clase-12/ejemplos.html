@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let nombre1 = "Ricky"; // prompt
+      let edad = 40; // prompt
+
+      // Sintaxis original
+      if (mayorEdad >= 18) {
+        mayorEdad = true;
+      } else {
+        mayorEdad = false;
+      }
+
+      // Alternativa con operador ternario
+      let mayorEdad = edad >= 18 ? true : false;
+
+      // Operador AND
+      temperatura = 31;
+      temperatura > 30 && alert("Hace calor");
+
+      // Variables Falsy
+      let variable;
+      variable = false;
+      variable = 0;
+      variable = "";
+      variable = null;
+      variable = undefined;
+      variable = NaN;
+
+      if (variable) {
+        console.log("La variable es válida (true):", variable);
+      } else {
+        console.log("No entró en el condicional (falsy):", variable);
+      }
+
+      // Operador nullish
+      variable = "";
+      console.log(variable ?? "Es nullish");
+
+      // Desesctructuración y alias
+      const productoArroz = {
+        nombre: "Arroz",
+        precio: 100,
+        cantidad: 2,
+        stock: 1,
+      };
+      let { precio: precioProducto, nombre: nombreProducto } = productoArroz;
+
+      let nombre;
+
+      mostrarProducto(productoArroz);
+
+      function mostrarProducto({ nombre, precio }) {
+        console.log(nombre);
+        console.log(precio);
+      }
+
+      // Desectructuración arrays
+      const nombres = ["Juan", "Julieta", "Carlos", "Mariela", "Ricardo"];
+      const [, , , , nombre5] = nombres;
+      console.log(nombre5);
+    </script>
+  </body>
+</html>
