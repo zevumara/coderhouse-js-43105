@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .fondoRojo {
+      background-color: red;
+    }
+    .bordesNegros {
+      border: 5px solid black;
+    }
+    .colorAzul {
+      color: blue;
+    }
+    .darkMode {
+      background-color: black;
+      color: white;
+    }
+    .ocultar {
+      display: none;
+    }
+  </style>
+  <body>
+    <div id="elementoDiv">
+      <h1>Esto es un div</h1>
+    </div>
+    <button id="btn">Modo oscuro</button>
+
+    <div id="MLA19892861" data-indice="1" data-stock="20" class="producto">
+      <h2>Producto: Arroz</h2>
+      <h3>Precio: $100</h3>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, explicabo?</p>
+      <button class="btnComprar">Comprar</button>
+    </div>
+
+    <script>
+      // ClassList
+      const elementoDiv = document.querySelector("#elementoDiv");
+      const elementoButton = document.querySelector("#btn");
+      // Add y remove
+      elementoDiv.classList.add("bordesNegros", "fondoRojo", "colorAzul");
+      elementoDiv.classList.remove("fondoRojo");
+      // Contains
+      if (elementoDiv.classList.contains("modoOsc")) {
+        console.log("Ricky JS: SI TIENE FONDO ROJO");
+      } else {
+        console.log("Ricky JS: NO FLACO NO TIENE");
+      }
+      // Toggle
+      elementoButton.addEventListener("click", function () {
+        elementoDiv.classList.toggle("ocultar");
+      });
+
+      // Obtener atributos del HTML
+      const productos = ["Arroz", "Fideos"];
+
+      const productoArroz = document.querySelector(".producto");
+      // ID
+      const id = productoArroz.id;
+      // Usando el data-set
+      console.log(productos[productoArroz.dataset.indice]);
+    </script>
+  </body>
+</html>

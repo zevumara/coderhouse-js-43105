@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Spread con arrays
+      const nombres1 = ["Juan", "Julieta", "Carlos", "Mariela"];
+      const nombres2 = ["Seba", "Ricky"];
+      const combinado = [false, ...nombres1, ...nombres2];
+      console.log(combinado);
+
+      // Spread con objetos
+      const habilidadesTrueno = {
+        trueno: 2,
+        impactrueno: 5,
+        rayo: 6,
+        punioTrueno: 4,
+      };
+
+      const pikachu = {
+        nombre: "Pikachu",
+        nivel: 1,
+        tipo: "trueno",
+        ...habilidadesTrueno,
+      };
+
+      const zapdos = {
+        nombre: "Zapdos",
+        nivel: 2,
+        tipo: "trueno",
+        ...habilidadesTrueno,
+      };
+
+      console.log(zapdos);
+
+      const celular = {
+        nombre: "Celular",
+      };
+      const celularCarrito = { ...celular, cantidad: 1 };
+
+      // Spread con parametros ilimitados
+      function sumar(...parametros) {
+        for (let parametro of parametros) {
+          console.log(parametro);
+        }
+      }
+
+      sumar(1, 4, 6, 8, 10, 20, 4, 43, 20);
+
+      // Negación lógica
+
+      let modoOscuro = false;
+      // Sintaxis original
+      if (modoOscuro) {
+        modoOscuro = false;
+      } else {
+        modoOscuro = true;
+      }
+      // Sugar syntax: aplicando negación lógica
+      console.log("Antes:", modoOscuro);
+      modoOscuro = !modoOscuro;
+      console.log("Después:", modoOscuro);
+    </script>
+  </body>
+</html>
