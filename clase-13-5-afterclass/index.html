@@ -4,35 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      .producto {
-        display: flex;
-        flex-direction: row;
-        border: 1px solid black;
-        align-items: center;
-        gap: 50px;
-        margin: 5px;
-        padding: 10px;
-        border-radius: 5px;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Productos -->
     <main>
-      <form id="formBuscar">
-        <input type="text" id="inputBuscar" value="" />
-      </form>
+      <input type="text" id="inputBuscar" value="" placeholder="Buscar producto..." />
       <div id="productos">
         <!-- Acá van a ir los productos que tengamos en la base de datos -->
       </div>
     </main>
-    <section>
-      <h1>Carrito (<span id="cantidadProductos">0</span>)</h1>
+
+    <!-- Carrito -->
+    <section class="ocultar">
+      <h1>
+        <span id="cantidadProductos">0</span>
+      </h1>
       <div id="carrito">
         <!-- Acá vamos a cargar los productos que estén en el carrito -->
       </div>
       <h3>Total: $<span id="totalCarrito">0</span></h3>
     </section>
+
     <script src="app.js"></script>
   </body>
 </html>
