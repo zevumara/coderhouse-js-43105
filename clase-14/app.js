@@ -89,7 +89,7 @@ function cargarProductos(productos) {
             <div class="imagen">
               <img src="img/${producto.imagen}" />
             </div>
-            <a href="#" class="btnAgregar" data-id="${producto.id}">Agregar al carrito</a>
+            <a href="#" class="btn btnAgregar" data-id="${producto.id}">Agregar al carrito</a>
         </div>
     `;
   }
@@ -173,7 +173,7 @@ class Carrito {
             <h2>${producto.nombre}</h2>
             <p>$${producto.precio}</p>
             <p>Cantidad: ${producto.cantidad}</p>
-            <a href="#" data-id="${producto.id}" class="btnQuitar">Quitar del carrito</a>
+            <a href="#" data-id="${producto.id}" class="btn btnQuitar">Quitar del carrito</a>
         </div>
     `;
       // Actualizamos los totales

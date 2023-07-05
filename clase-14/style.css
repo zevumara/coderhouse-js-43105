@@ -60,9 +60,7 @@ section h3 {
   text-align: center;
   font-size: 30px;
 }
-.btnAgregar,
-.btnQuitar,
-.btnComprar {
+.btn {
   color: white;
   background-color: blue;
   text-decoration: none;
@@ -70,12 +68,18 @@ section h3 {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
-  margin: 10px 0;
   border: 1px solid blue;
+  margin: 10px auto;
+  display: block;
+  text-align: center;
 }
-.btnAgregar:hover,
-.btnQuitar:hover {
+.btn:hover {
   border: 1px solid white;
+}
+.btnQuitar {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px 10px;
 }
 .productoCarrito {
   border-bottom: 2px dashed rgba(0, 0, 0, 0.2);
@@ -120,12 +124,6 @@ section h3 {
 }
 .producto .imagen img {
   max-height: 150px;
-}
-.producto .btnAgregar,
-.btnComprar {
-  margin: auto;
-  display: block;
-  text-align: center;
 }
 .btnComprar {
   margin-top: 30px;
