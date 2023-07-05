@@ -254,9 +254,9 @@ botonComprar.addEventListener("click", (event) => {
     icon: "success",
     confirmButtonText: "Aceptar",
   });
-  // Vacíamos el carrito y lo ocultamos
+  // Vacíamos el carrito
   carrito.vaciar();
-  // Oculto el carrito
+  // Ocultamos el carrito en el HTML
   document.querySelector("section").classList.add("ocultar");
 });
 
