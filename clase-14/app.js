@@ -246,7 +246,8 @@ botonCarrito.addEventListener("click", () => {
 });
 
 // Mensaje de compra realizada con la librería Sweet Alert
-botonComprar.addEventListener("click", () => {
+botonComprar.addEventListener("click", (event) => {
+  event.preventDefault();
   Swal.fire({
     title: "Su pedido está en camino",
     text: "¡Su compra ha sido realizada con éxito!",
