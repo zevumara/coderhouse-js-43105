@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Entra en un bucle hasta que pasen X cantidad de segundos
+      function sleep(segundos) {
+        const inicio = Date.now();
+        while (Date.now() - inicio < segundos * 1000) {}
+      }
+
+      function primeraInstruccion() {
+        console.log(">> Cargando primer instrucción...");
+        sleep(3);
+        console.log("Primer instrucción cargada.");
+      }
+
+      function segundaInstruccion() {
+        console.log("\n\n>> Cargando segunda instrucción...");
+        sleep(3);
+        console.log("Segunda instrucción cargada.");
+      }
+
+      function terceraInstruccion() {
+        console.log("\n\n>> Cargando tercer instrucción...");
+        sleep(3);
+        console.log("Tercer instrucción cargada.");
+      }
+
+      function segundaInstruccionAsincronica() {
+        console.log("\n\n>> Cargando segunda instrucción...");
+        setTimeout(function () {
+          console.log("\n\nSegunda instrucción cargada.");
+        }, 8000);
+      }
+
+      // Algoritmo sincrónico
+      primeraInstruccion();
+      segundaInstruccion();
+      terceraInstruccion();
+
+      // Algoritmo asincrónico
+      primeraInstruccion();
+      segundaInstruccionAsincronica();
+      terceraInstruccion();
+
+      let acumularMilisegundos = 0;
+
+      for (let letra of "hola") {
+        setTimeout(() => {
+          console.log(letra);
+        }, acumularMilisegundos);
+        acumularMilisegundos += 1000;
+      }
+
+      for (let letra of " mundo") {
+        setTimeout(() => {
+          console.log(letra);
+        }, acumularMilisegundos);
+        acumularMilisegundos += 1000;
+      }
+      let tic = true;
+      setInterval(() => {
+        tic ? console.log("Tic") : console.log("Tac");
+        tic = !tic;
+      }, 1000);
+
+      function buscarProductos(palabra) {
+        console.log(`Buscando productos con la palabra ${palabra}...`);
+        const promesa = new Promise((resolve, rechazada) => {
+          setTimeout(function () {
+            // simular lo que nos devuelve una API o un servidor
+            let resultadoBusqueda = [];
+            if (palabra == "arroz") {
+              resultadoBusqueda = ["Arroz", "Arroz Integral"];
+            } else {
+              resultadoBusqueda = [];
+            }
+
+            if (resultadoBusqueda.length > 0) {
+              resolve(resultadoBusqueda);
+            } else {
+              rechazada("No se encontraron resultados en la búsqueda.");
+            }
+          }, 5000);
+        });
+        return promesa;
+      }
+
+      const promesa = buscarProductos("arroz");
+      promesa
+        .then((respuesta) => {
+          console.log(respuesta);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          console.log("Fin del proceso");
+        });
+    </script>
+  </body>
+</html>
