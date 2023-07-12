@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #333;
+        text-align: center;
+        padding: 10px;
+        color: white;
+        background-color: red;
+      }
+      #inputPokemon {
+        width: 80%;
+        font-size: 40px;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+      }
+      #infoPokemon {
+        width: 80%;
+        margin: auto;
+        font-size: 40px;
+        text-transform: capitalize;
+        background-color: black;
+        border: 10px solid white;
+        border-radius: 10px;
+      }
+      #infoPokemon img {
+        min-height: 700px;
+        max-width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="formPokemon">
+      <input type="text" id="inputPokemon" value="" placeholder="Buscar pokémon..." />
+    </form>
+
+    <div id="infoPokemon"></div>
+    <script>
+      const formPokemon = document.querySelector("#formPokemon");
+      const inputPokemon = document.querySelector("#inputPokemon");
+      const divInfoPokemon = document.querySelector("#infoPokemon");
+
+      formPokemon.addEventListener("submit", (event) => {
+        event.preventDefault();
+        divInfoPokemon.innerHTML = "<img src='loading.webp' />";
+        cargarPokemon(inputPokemon.value);
+      });
+
+      function cargarPokemon(numero) {
+        fetch("https://pokeapi.co/api/v2/pokemon/" + numero)
+          .then((response) => response.json())
+          .then((pokemon) => {
+            divInfoPokemon.innerHTML = `
+                <h1>#${pokemon.id} ${pokemon.name}</h1>
+                <img src="${pokemon.sprites.other.dream_world.front_default}" />
+                <p>Peso: ${pokemon.weight}lbs |
+                Altura: ${pokemon.height}"
+                | HP: ${pokemon.stats[0].base_stat}</p>
+            `;
+          });
+      }
+    </script>
+  </body>
+</html>

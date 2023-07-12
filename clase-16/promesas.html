@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function instructionSincronica() {
+        console.log("Esto es una instrucción sincrónica.");
+      }
+
+      function instructionAsincronica() {
+        const promesa = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Esto es una instrucción asincrónica.");
+          }, 4000 * Math.random());
+        });
+        return promesa;
+      }
+
+      instructionSincronica();
+      instructionAsincronica().then((result) => {
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>
