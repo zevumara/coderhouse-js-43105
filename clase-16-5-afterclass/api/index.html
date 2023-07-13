@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Toastify -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <!-- Nuestro CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Productos -->
+    <main>
+      <form id="formBuscar">
+        <input type="text" id="inputBuscar" value="" placeholder="Buscar producto..." />
+      </form>
+      <ul id="categorias">
+        <li>
+          <a href="#" class="btn btnCategoria seleccionado" data-categoria="MLA1652">Notebooks</a>
+        </li>
+        <li><a href="#" class="btn btnCategoria" data-categoria="MLA1658">Placas de Video</a></li>
+        <li><a href="#" class="btn btnCategoria" data-categoria="MLA1693">Procesadores</a></li>
+      </ul>
+      <div id="productos">
+        <!-- Acá van a ir los productos que tengamos en la base de datos -->
+      </div>
+    </main>
+
+    <!-- Carrito -->
+    <section class="ocultar">
+      <h1>
+        <span id="cantidadProductos">0</span>
+      </h1>
+      <div id="carrito">
+        <!-- Acá vamos a cargar los productos que estén en el carrito -->
+      </div>
+      <h3>Total: $<span id="totalCarrito">0</span></h3>
+      <a href="#" id="botonComprar" class="btn btnComprar oculto">Comprar</a>
+    </section>
+
+    <!-- Librería Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Nuestra aplicación -->
+    <script src="app.js"></script>
+  </body>
+</html>

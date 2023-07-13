@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arroz",
+    "precio": 100,
+    "categoria": "Granos",
+    "imagen": "arroz.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Fideos",
+    "precio": 50,
+    "categoria": "Pastas",
+    "imagen": "fideos.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Alfajor",
+    "precio": 25,
+    "categoria": "Golosinas",
+    "imagen": "alfajor.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Atun",
+    "precio": 425,
+    "categoria": "Enlatados",
+    "imagen": "atun.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Pan",
+    "precio": 100,
+    "categoria": "Panaderia",
+    "imagen": "pan.jpg"
+  }
+]

@@ -1,9 +1,9 @@
 /*
 Objetivos:
-- Categorías (filtrado)
-- Usar asincronía (fetch):
-  - Opción 1: Cargar un archivo .json local con NUESTROS productos
-  - Opción 2: Usar una API como la de Mercado Libre
+- Categorías (filtrado) ✅
+- Usar asincronía (fetch): ✅
+  - Opción 1: Cargar un archivo .json local con NUESTROS productos ✅
+  - Opción 2: Usar una API como la de Mercado Libre ✅
 */
 
 // Clase "molde" para los productos
@@ -17,52 +17,66 @@ class Producto {
   }
 }
 
-// Esta clase va a simular una base de datos. Vamos a cargar todos los productos
-// de nuestro e-commerce.
-class BaseDeDatos {
-  constructor() {
-    // Array de la base de datos
-    this.productos = [];
-    // Con una simple línea de código, vamos a ir cargando todos los productos que tengamos
-    this.agregarRegistro(1, "Arroz", 100, "Granos", "arroz.jpg");
-    this.agregarRegistro(2, "Fideos", 50, "Pastas", "fideos.jpg");
-    this.agregarRegistro(3, "Alfajor", 25, "Golosinas", "alfajor.jpg");
-    this.agregarRegistro(4, "Pan", 25, "Panaderia", "pan.jpg");
-    this.agregarRegistro(6, "Atún", 200, "Enlatados", "atun.jpg");
-  }
+// Variables globales
+const limiteProductos = 12;
+let productos = [];
+let categoriaSeleccionada = "MLA1652";
 
-  // Método que crea el objeto producto y lo almacena en el array con un push
-  agregarRegistro(id, nombre, precio, categoria, imagen = false) {
-    const producto = new Producto(id, nombre, precio, categoria, imagen);
-    this.productos.push(producto);
-  }
-
-  // Nos retorna el array con todos los productos de la base de datos
-  traerRegistros() {
-    return this.productos;
-  }
-
-  // Busca un producto por ID, si lo encuentra lo retorna en forma de objeto
-  // A tener en cuenta: Los IDs son únicos, debe haber uno solo por producto para evitar errores
-  registroPorId(id) {
-    return this.productos.find((producto) => producto.id === id);
-  }
-
-  // Retorna una lista (array) de productos que incluyan en el nombre los caracteres
-  // que le pasamos por parámetro. Si le pasamos "a" como parámetro, va a buscar y
-  // devolver todos los productos que tengan la letra "a" en el nombre del producto
-  registrosPorNombre(palabra) {
-    return this.productos.filter((producto) => producto.nombre.toLowerCase().includes(palabra));
-  }
-
-  //
-  registrosPorCategoria(categoria) {
-    return this.productos.filter((producto) => producto.categoria == categoria);
-  }
+// Busca un producto por ID, si lo encuentra lo retorna en forma de objeto
+function registroPorId(id) {
+  return productos.find((producto) => producto.id === id);
 }
 
-// Objeto de la base de datos
-const bd = new BaseDeDatos();
+// Función asincrónica para buscar productos por categoría en el API de Mercado Libre
+async function apiProductosPorCategoria(categoria = categoriaSeleccionada) {
+  const response = await fetch(
+    `https://api.mercadolibre.com/sites/MLA/search?category=${categoria}&limit=${limiteProductos}&offset=0`
+  );
+  const api = await response.json();
+  const productosMercadoLibre = api.results; // Este es el array de productos de ML
+  // Vamos a convertir los objetos de productos de ML a nuestra clase Productos,
+  // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
+  // de la clase molde Productos con los atributos de ML y los guardamos en un array
+  productos = [];
+  for (const productoMercadoLibre of productosMercadoLibre) {
+    productos.push(
+      new Producto(
+        productoMercadoLibre.id,
+        productoMercadoLibre.title.slice(0, 20) + "...",
+        productoMercadoLibre.price,
+        productoMercadoLibre.category_id,
+        productoMercadoLibre.thumbnail_id
+      )
+    );
+  }
+  return productos;
+}
+
+// Función asincrónica para buscar productos por categoría en el API de Mercado Libre
+async function apiProductosPorNombre(nombre) {
+  const response = await fetch(
+    `https://api.mercadolibre.com/sites/MLA/search?category=${categoriaSeleccionada}&q=${nombre}&limit=${limiteProductos}&offset=0`
+  );
+  const api = await response.json();
+  const productosMercadoLibre = api.results; // Este es el array de productos de ML
+  console.log(productosMercadoLibre);
+  // Vamos a convertir los objetos de productos de ML a nuestra clase Productos,
+  // para hacerlos compatible con nuestro carrito. Simplemente instanciamos objetos
+  // de la clase molde Productos con los atributos de ML y los guardamos en un array
+  productos = [];
+  for (const productoMercadoLibre of productosMercadoLibre) {
+    productos.push(
+      new Producto(
+        productoMercadoLibre.id,
+        productoMercadoLibre.title.slice(0, 20) + "...",
+        productoMercadoLibre.price,
+        productoMercadoLibre.category_id,
+        productoMercadoLibre.thumbnail_id
+      )
+    );
+  }
+  return productos;
+}
 
 // Elementos
 const divProductos = document.querySelector("#productos");
@@ -74,34 +88,47 @@ const botonCarrito = document.querySelector("section h1");
 const botonComprar = document.querySelector("#botonComprar");
 const botonesCategorias = document.querySelectorAll(".btnCategoria");
 
+// Apenas carga la página por primera vez, muestro el loading
+mostrarLoading();
+// Llamamos a la función asincrónica, cuando esté resulta mostramos los
+// productos y cerramos el loading
+apiProductosPorCategoria().then((productos) => {
+  cargarProductos(productos);
+  Swal.close(); // Cierro el loading
+});
+
+// Muestra un Sweet Alert
+function mostrarLoading() {
+  Swal.fire({
+    title: "Cargando",
+    html: "Estamos buscando productos...",
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+}
+
+// Botones categorías
 botonesCategorias.forEach((boton) => {
   boton.addEventListener("click", (event) => {
     event.preventDefault();
-    quitarClaseSeleccionado();
+    quitarClase();
     boton.classList.add("seleccionado");
-    const productosPorCategoria = bd.registrosPorCategoria(boton.innerText);
-    cargarProductos(productosPorCategoria);
+    inputBuscar.value = "";
+    // Mostramos el loading
+    mostrarLoading();
+    // Tomamos la categoría del HTML (data-categoria)
+    categoriaSeleccionada = boton.dataset.categoria;
+    // Llamamos a la función asincrónica, cuando esté resulta mostramos los
+    // productos y cerramos el loading
+    apiProductosPorCategoria().then((productos) => {
+      cargarProductos(productos);
+      Swal.close(); // Cerramos el loading
+    });
   });
 });
-
-const botonTodos = document.querySelector("#btnTodos");
-botonTodos.addEventListener("click", (event) => {
-  event.preventDefault();
-  quitarClaseSeleccionado();
-  botonTodos.classList.add("seleccionado");
-  cargarProductos(bd.traerRegistros());
-});
-
-function quitarClaseSeleccionado() {
-  const botonSeleccionado = document.querySelector(".seleccionado");
-  if (botonSeleccionado) {
-    botonSeleccionado.classList.remove("seleccionado");
-  }
-}
-
-// Llamamos a la función regular cargarProductos, le pasamos como parámetro
-// el método de la base de datos que trae todos los productos
-cargarProductos(bd.traerRegistros());
 
 // Esta función regular recibe como parámetro un array de productos y se encarga
 // de renderizarlos en el HTML
@@ -117,7 +144,7 @@ function cargarProductos(productos) {
             <h2>${producto.nombre}</h2>
             <p class="precio">$${producto.precio}</p>
             <div class="imagen">
-              <img src="img/${producto.imagen}" />
+              <img src="https://http2.mlstatic.com/D_604790-${producto.imagen}-V.webp" />
             </div>
             <a href="#" class="btn btnAgregar" data-id="${producto.id}">Agregar al carrito</a>
         </div>
@@ -131,12 +158,21 @@ function cargarProductos(productos) {
     boton.addEventListener("click", (event) => {
       event.preventDefault();
       // Obtenemos el ID del producto del atributo data-id
-      const id = Number(boton.dataset.id);
+      const id = boton.dataset.id;
+      console.log(id);
       // Con ese ID, consultamos a nuestra base de datos por el producto
-      const producto = bd.registroPorId(id);
+      const producto = registroPorId(id);
       // Agregamos el registro (producto) a nuestro carrito
       carrito.agregar(producto);
     });
+  }
+}
+
+// Quitar clase seleccionada
+function quitarClase() {
+  const botonSeleccionado = document.querySelector(".seleccionado");
+  if (botonSeleccionado) {
+    botonSeleccionado.classList.remove("seleccionado");
   }
 }
 
@@ -225,7 +261,7 @@ class Carrito {
         event.preventDefault();
         // Llamamos al método quitar, pasándole el ID del producto que sacamos
         // del atributo data-id del HTML
-        this.quitar(Number(boton.dataset.id));
+        this.quitar(boton.dataset.id);
       };
     }
     // Actualizamos variables carrito
@@ -259,15 +295,19 @@ class Carrito {
   }
 }
 
-// Buscador: al soltar una tecla se ejecuta el evento keyup
-inputBuscar.addEventListener("keyup", () => {
+// Buscador: al presionar enter se ejecuta el evento submit
+formBuscar.addEventListener("submit", (event) => {
+  event.preventDefault();
   // Obtenemos el atributo value del input
   const palabra = inputBuscar.value;
-  // Pedimos a nuestra base de datos que nos traiga todos los registros
-  // que coincidan con la palabra que pusimos en nuestro input
-  const productosEncontrados = bd.registrosPorNombre(palabra.toLowerCase());
-  // Lo mostramos en el HTML
-  cargarProductos(productosEncontrados);
+  // Muestro el loading previo a cargar los productos
+  mostrarLoading();
+  // Llamamos a la función asincrónica, cuando esté resulta mostramos los
+  // productos y cerramos el loading
+  apiProductosPorNombre(palabra).then((productos) => {
+    cargarProductos(productos);
+    Swal.close(); // Cierro el loading
+  });
 });
 
 // Toggle para ocultar/mostrar el carrito
