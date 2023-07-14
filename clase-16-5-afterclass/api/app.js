@@ -29,6 +29,8 @@ function registroPorId(id) {
 
 // Función asincrónica para buscar productos por categoría en el API de Mercado Libre
 async function apiProductosPorCategoria(categoria = categoriaSeleccionada) {
+  // Muestro el loading
+  mostrarLoading();
   const response = await fetch(
     `https://api.mercadolibre.com/sites/MLA/search?category=${categoria}&limit=${limiteProductos}&offset=0`
   );
@@ -49,11 +51,14 @@ async function apiProductosPorCategoria(categoria = categoriaSeleccionada) {
       )
     );
   }
-  return productos;
+  cargarProductos(productos);
+  Swal.close(); // Cierro el loading
 }
 
 // Función asincrónica para buscar productos por categoría en el API de Mercado Libre
 async function apiProductosPorNombre(nombre) {
+  // Muestro el loading
+  mostrarLoading();
   const response = await fetch(
     `https://api.mercadolibre.com/sites/MLA/search?category=${categoriaSeleccionada}&q=${nombre}&limit=${limiteProductos}&offset=0`
   );
@@ -75,7 +80,8 @@ async function apiProductosPorNombre(nombre) {
       )
     );
   }
-  return productos;
+  cargarProductos(productos);
+  Swal.close(); // Cierro el loading
 }
 
 // Elementos
@@ -88,14 +94,8 @@ const botonCarrito = document.querySelector("section h1");
 const botonComprar = document.querySelector("#botonComprar");
 const botonesCategorias = document.querySelectorAll(".btnCategoria");
 
-// Apenas carga la página por primera vez, muestro el loading
-mostrarLoading();
-// Llamamos a la función asincrónica, cuando esté resulta mostramos los
-// productos y cerramos el loading
-apiProductosPorCategoria().then((productos) => {
-  cargarProductos(productos);
-  Swal.close(); // Cierro el loading
-});
+// Llamamos a la función asincrónica
+apiProductosPorCategoria();
 
 // Muestra un Sweet Alert
 function mostrarLoading() {
@@ -117,16 +117,11 @@ botonesCategorias.forEach((boton) => {
     quitarClase();
     boton.classList.add("seleccionado");
     inputBuscar.value = "";
-    // Mostramos el loading
-    mostrarLoading();
     // Tomamos la categoría del HTML (data-categoria)
     categoriaSeleccionada = boton.dataset.categoria;
     // Llamamos a la función asincrónica, cuando esté resulta mostramos los
     // productos y cerramos el loading
-    apiProductosPorCategoria().then((productos) => {
-      cargarProductos(productos);
-      Swal.close(); // Cerramos el loading
-    });
+    apiProductosPorCategoria();
   });
 });
 
@@ -300,14 +295,9 @@ formBuscar.addEventListener("submit", (event) => {
   event.preventDefault();
   // Obtenemos el atributo value del input
   const palabra = inputBuscar.value;
-  // Muestro el loading previo a cargar los productos
-  mostrarLoading();
   // Llamamos a la función asincrónica, cuando esté resulta mostramos los
   // productos y cerramos el loading
-  apiProductosPorNombre(palabra).then((productos) => {
-    cargarProductos(productos);
-    Swal.close(); // Cierro el loading
-  });
+  apiProductosPorNombre(palabra);
 });
 
 // Toggle para ocultar/mostrar el carrito

@@ -31,6 +31,11 @@ section {
   padding: 30px;
   transition: all 0.2s;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+#scroll {
+  overflow-y: auto;
 }
 section h1 {
   position: absolute;

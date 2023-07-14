@@ -33,5 +33,19 @@
     "precio": 100,
     "categoria": "Panaderia",
     "imagen": "pan.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Caramelos",
+    "precio": 100,
+    "categoria": "Golosinas",
+    "imagen": "alfajor.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Caramelos",
+    "precio": 100,
+    "categoria": "Golosinas",
+    "imagen": "alfajor.jpg"
   }
 ]

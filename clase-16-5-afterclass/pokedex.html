@@ -66,19 +66,15 @@
       // }
 
       async function cargarPokemon(numero) {
-        try {
-          const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + numero);
-          const pokemon = await response.json();
-          divInfoPokemon.innerHTML = `
-              <h1>#${pokemon.id} ${pokemon.name}</h1>
-              <img src="${pokemon.sprites.other.dream_world.front_default}" />
-              <p>Peso: ${pokemon.weight}lbs |
-              Altura: ${pokemon.height}"
-              | HP: ${pokemon.stats[0].base_stat}</p>
-          `;
-        } catch (error) {
-          divInfoPokemon.innerHTML = "No se encontró el pokémon.";
-        }
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + numero);
+        const pokemon = await response.json();
+        divInfoPokemon.innerHTML = `
+            <h1>#${pokemon.id} ${pokemon.name}</h1>
+            <img src="${pokemon.sprites.other.dream_world.front_default}" />
+            <p>Peso: ${pokemon.weight}lbs |
+            Altura: ${pokemon.height}"
+            | HP: ${pokemon.stats[0].base_stat}</p>
+        `;
       }
     </script>
   </body>
